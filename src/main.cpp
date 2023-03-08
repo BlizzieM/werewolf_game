@@ -1,5 +1,6 @@
 #include <iostream>
 #include "raylib.h"
+#include "enemy.hpp"
 
 const int wWidht{1600};
 const int wHeight{900};
@@ -36,6 +37,8 @@ int main(void) {
         colors[i] = Color{(unsigned char)GetRandomValue(20,255), (unsigned char)GetRandomValue(10,55), 30, 255};
     }
 
+    enemy ene{};
+
     SetCameraMode(camera, CAMERA_FIRST_PERSON);
 
     SetTargetFPS(60);
@@ -58,12 +61,14 @@ int main(void) {
                 DrawCube(Vector3{0.0f, 2.5f,16.0f}, 32.0f, 5.0f, 1.0f, GOLD);
                 DrawCube(Vector3{0.0f, 2.5f,-16.0f}, 32.0f, 5.0f, 1.0f, MAGENTA);
 
+            /*
               for (int i = 0; i < MAX_COLUMNS; i++)
                 {
                     DrawCube(positions[i], 2.0f, heights[i], 2.0f, colors[i]);
                     DrawCubeWires(positions[i], 2.0f, heights[i], 2.0f, MAROON);
                 }
-                
+              */
+                ene.tick(GetFrameTime(), camera);  
                 EndMode3D();
 
             DrawText("Text", wWidht/2 -20, wHeight/2 -20, 20, LIGHTGRAY);
