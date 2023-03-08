@@ -12,7 +12,7 @@ int main(void) {
     
     //Initialization
     InitWindow(wWidht, wHeight, "Werewolf Game");
-
+    Texture2D enemyText{LoadTexture("texture/Imp.png")};
     //Define the camera to look into 3D world (position, target, up vector)
     Camera camera = {0};
     camera.position = Vector3{4.0f, 2.0f, 4.0f};      //camera pos
@@ -38,6 +38,8 @@ int main(void) {
     }
 
     enemy ene{};
+
+    
 
     SetCameraMode(camera, CAMERA_FIRST_PERSON);
 
@@ -69,9 +71,13 @@ int main(void) {
                 }
               */
                 ene.tick(GetFrameTime(), camera);  
+
+                //DrawBillboard(camera, enemyText, Vector3{ 0.0f, 2.0f, 0.0f }, 1.0f, WHITE );
+                //DrawBillboardPro(camera, enemyText, source, Vector3{ 0.0f, 2.0f, 0.0f }, Vector3{0.0f, 1.0f, 0.0f}, (Vector2) {1.0f, 1.0f}, Vector2{0.0f,0.0f}, 0.0f, WHITE);
                 EndMode3D();
 
             DrawText("Text", wWidht/2 -20, wHeight/2 -20, 20, LIGHTGRAY);
+           
 
             EndDrawing();
     }
