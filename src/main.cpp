@@ -1,5 +1,6 @@
 #include <iostream>
 #include "raylib.h"
+#include "raymath.h"
 #include "enemy.hpp"
 
 const int wWidht{1600};
@@ -12,7 +13,7 @@ int main(void) {
     
     //Initialization
     InitWindow(wWidht, wHeight, "Werewolf Game");
-    Texture2D enemyText{LoadTexture("texture/Imp.png")};
+    //Texture2D enemyText{LoadTexture("texture/Imp.png")};
     //Define the camera to look into 3D world (position, target, up vector)
     Camera camera = {0};
     camera.position = Vector3{4.0f, 2.0f, 4.0f};      //camera pos
