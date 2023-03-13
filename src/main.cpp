@@ -1,7 +1,9 @@
 #include <iostream>
+#include <string>
 #include "raylib.h"
 #include "raymath.h"
 #include "enemy.hpp"
+#include "player.hpp"
 
 const int wWidht{1600};
 const int wHeight{900};
@@ -13,17 +15,6 @@ int main(void) {
     
     //Initialization
     InitWindow(wWidht, wHeight, "Werewolf Game");
-    //Texture2D enemyText{LoadTexture("texture/Imp.png")};
-    //Define the camera to look into 3D world (position, target, up vector)
-    Camera camera = {0};
-    camera.position = Vector3{4.0f, 2.0f, 4.0f};      //camera pos
-    camera.target = Vector3{0.0f, 2.0f, 0.0f};      //camera look at point
-    camera.up = Vector3{0.0f, 1.0f, 0.0f};      //camera's up vector (rotation towards target)
-    camera.fovy = 99.0f;                                 //Camera fov - y
-    camera.projection = CAMERA_PERSPECTIVE;              //Camera projection type
-
-    int cameraMode = CAMERA_FIRST_PERSON;
-
     //generate some random columns
 
     float heights[MAX_COLUMNS] = {0};
@@ -38,25 +29,28 @@ int main(void) {
         colors[i] = Color{(unsigned char)GetRandomValue(20,255), (unsigned char)GetRandomValue(10,55), 30, 255};
     }
 
+
+    player  plaja{};
     enemy ene{};
+    Camera3D* playerCameraPtr = plaja.GetCameraPtr();
 
     
 
-    SetCameraMode(camera, CAMERA_FIRST_PERSON);
+    
 
     SetTargetFPS(60);
 
     //main game loop
     while (!WindowShouldClose())
     {
-        UpdateCamera(&camera);
+        UpdateCamera(playerCameraPtr);
 
         BeginDrawing();
         
 
             ClearBackground(RAYWHITE);
 
-            BeginMode3D(camera);
+            BeginMode3D(*playerCameraPtr);
 
                 DrawPlane(Vector3{0.0f, 0.0f, 0.0f}, Vector2{32.0f, 32.0f}, LIGHTGRAY);
                 DrawCube(Vector3{-16.0f, 2.5f, 0.0f},1.0f, 5.0f, 32.0f, BLUE);
@@ -71,14 +65,19 @@ int main(void) {
                     DrawCubeWires(positions[i], 2.0f, heights[i], 2.0f, MAROON);
                 }
               */
-                ene.tick(GetFrameTime(), camera);  
+                plaja.tick(GetFrameTime());
+                ene.tick(GetFrameTime(), *playerCameraPtr);  
 
                 //DrawBillboard(camera, enemyText, Vector3{ 0.0f, 2.0f, 0.0f }, 1.0f, WHITE );
                 //DrawBillboardPro(camera, enemyText, source, Vector3{ 0.0f, 2.0f, 0.0f }, Vector3{0.0f, 1.0f, 0.0f}, (Vector2) {1.0f, 1.0f}, Vector2{0.0f,0.0f}, 0.0f, WHITE);
                 EndMode3D();
+            
 
-            DrawText("Text", wWidht/2 -20, wHeight/2 -20, 20, LIGHTGRAY);
-           
+            std::string coordenates = "X: ";
+            coordenates.append(std::to_string(plaja.getWorldPosition().x), 0, 5);
+            coordenates.append(" Y: " + std::to_string(plaja.getWorldPosition().y), 0, 9);
+            coordenates.append(" Z: " + std::to_string(plaja.getWorldPosition().z), 0, 9);
+            DrawText(coordenates.c_str(), 40, 40, 20, RED);
 
             EndDrawing();
     }

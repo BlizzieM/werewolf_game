@@ -1,3 +1,7 @@
 1: load sprite into the game
 2: make the face player
 3: make sprite "rotate" based on the facing relative to player
+    calculate the angle between player and the billboard.
+    make the angle show up in the game window by drawing it as a text 
+    experiment with sprite and see how you make it turn
+        get a better spritesheet for this
