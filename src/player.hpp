@@ -1,3 +1,6 @@
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
+
 #include <iostream>
 #include "raylib.h"
 #include "raymath.h"
@@ -17,3 +20,5 @@ class player
     Vector3 worldUp{0.0f, 1.0f, 0.0f};
 
 };
+
+#endif

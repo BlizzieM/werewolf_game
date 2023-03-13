@@ -31,7 +31,7 @@ int main(void) {
 
 
     player  plaja{};
-    enemy ene{};
+    enemy ene{&plaja};
     Camera3D* playerCameraPtr = plaja.GetCameraPtr();
 
     
@@ -73,11 +73,9 @@ int main(void) {
                 EndMode3D();
             
 
-            std::string coordenates = "X: ";
-            coordenates.append(std::to_string(plaja.getWorldPosition().x), 0, 5);
-            coordenates.append(" Y: " + std::to_string(plaja.getWorldPosition().y), 0, 9);
-            coordenates.append(" Z: " + std::to_string(plaja.getWorldPosition().z), 0, 9);
-            DrawText(coordenates.c_str(), 40, 40, 20, RED);
+            std::string Angle = "Angle: ";
+            Angle.append(std::to_string(ene.getAngle()), 0, 5);
+            DrawText(Angle.c_str(), 40, 40, 20, RED);
 
             EndDrawing();
     }
