@@ -76,7 +76,7 @@ int main(void) {
             
 
             std::string Angle = "Angle: ";
-            Angle.append(std::to_string(ene.getAngle()), 0, 5);
+            Angle.append(std::to_string(ene.getAngle() * 180/3.14159265359f), 0, 5);
             DrawText(Angle.c_str(), 40, 40, 20, RED);
 
             EndDrawing();
