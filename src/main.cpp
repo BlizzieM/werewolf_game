@@ -31,7 +31,8 @@ int main(void) {
 
 
     player  plaja{};
-    enemy ene{&plaja};
+    player* plajaPtr = &plaja;
+    enemy ene{plajaPtr};
     Camera3D* playerCameraPtr = plaja.GetCameraPtr();
 
     
@@ -65,6 +66,7 @@ int main(void) {
                     DrawCubeWires(positions[i], 2.0f, heights[i], 2.0f, MAROON);
                 }
               */
+                ene.setPlayerPos(plajaPtr ->getWorldPosition());
                 plaja.tick(GetFrameTime());
                 ene.tick(GetFrameTime(), *playerCameraPtr);  
 
@@ -78,6 +80,8 @@ int main(void) {
             DrawText(Angle.c_str(), 40, 40, 20, RED);
 
             EndDrawing();
+
+
     }
 
     CloseWindow();
