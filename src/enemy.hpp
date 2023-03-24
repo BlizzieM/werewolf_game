@@ -2,6 +2,7 @@
 #define ENEMY_HPP
 
 #include <iostream>
+#include <vector>
 #include "raylib.h"
 #include "raymath.h"
 #include "player.hpp"
@@ -18,7 +19,7 @@ class enemy
     private:
     float width{48.f};
     float height{90.f};
-    Texture2D enemyText{LoadTexture("../texture/Imp.png")};
+    Texture2D enemyText{};
     Vector3 worldPos{8.0f, 1.0f, 8.0f};
     Vector3 worldUp{0.0f, 1.0f, 0.0f};
     Rectangle source{8.0f,40.0f,48.0f,90};
@@ -27,7 +28,8 @@ class enemy
     float angle;
     float* anglePtr;
     Vector3 playerPos;
-    
+    std::vector<Texture2D> textureArray;
+    int numberOfTextures{5};
 
 };
 

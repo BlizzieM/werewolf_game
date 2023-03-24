@@ -3,6 +3,11 @@
 enemy::enemy(player* plPtr)
 {
     playerPtr = playerPtr;
+
+for(int i = 0; i < numberOfTextures; i++)
+{
+    textureArray.emplace_back(LoadTexture("../texture/Imp/1-{i+1}.png"));
+}
 }
 
 void enemy::tick(float deltaTime, Camera3D cam)
