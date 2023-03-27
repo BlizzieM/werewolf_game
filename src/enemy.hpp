@@ -22,7 +22,7 @@ class enemy
     Texture2D enemyText{};
     Vector3 worldPos{8.0f, 1.0f, 8.0f};
     Vector3 worldUp{0.0f, 1.0f, 0.0f};
-    Rectangle source{8.0f,40.0f,48.0f,90};
+    Rectangle source{0.0f,00.0f,48.0f,91.0f};
     player* playerPtr;
     void calculateAngle();
     float angle;

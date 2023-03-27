@@ -4,10 +4,13 @@ enemy::enemy(player* plPtr)
 {
     playerPtr = playerPtr;
 
-for(int i = 0; i < numberOfTextures; i++)
-{
-    textureArray.emplace_back(LoadTexture("../texture/Imp/1-{i+1}.png"));
-}
+    for(int i = 0; i < numberOfTextures; i++)
+    {
+        std::string S{"../texture/Imp/1-"};
+        S.append(std::to_string(i),0,1);
+        S.append(".png",0,4);
+        textureArray.emplace_back(LoadTexture(S.c_str()));
+    }
 }
 
 void enemy::tick(float deltaTime, Camera3D cam)
@@ -16,7 +19,7 @@ void enemy::tick(float deltaTime, Camera3D cam)
     anglePtr = &angle;
     Rectangle enemySource{width,height,width,height};
     //DrawBillboardPro(cam, enemyText, enemySource, worldPos, worldUp, Vector2{100.f,100.f},Vector2{0.0f,0.0f}, 0.0f, WHITE);
-    DrawBillboardPro(cam, enemyText, source, worldPos, worldUp, Vector2{3.0f,3.0f}, Vector2{1.0f,1.0f}, 0.0f, WHITE );
+    DrawBillboardPro(cam, textureArray.at(1), source, worldPos, worldUp, Vector2{3.0f,3.0f}, Vector2{1.0f,1.0f}, 0.0f, WHITE );
 
 }
 
