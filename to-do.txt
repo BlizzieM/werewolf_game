@@ -4,4 +4,5 @@
     calculate the angle between player and the billboard.
     make the angle show up in the game window by drawing it as a text 
     experiment with sprite and see how you make it turn
-        get a better spritesheet for this
+        use swich or some other way to determing
+        Build a function that returns number based on the rotation
