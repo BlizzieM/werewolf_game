@@ -6,3 +6,12 @@
     experiment with sprite and see how you make it turn
         use swich or some other way to determing
         Build a function that returns number based on the rotation
+DONE
+
+
+1: Make basic attack
+    find a way to display weapon sprite on Camera
+    make it animated
+    make sure the enemy registers it.
+        casting rays? hitboxes? take a look on how do these things work on raylib again
+    display a deug message on hit
