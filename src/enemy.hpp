@@ -29,7 +29,7 @@ class enemy
     float* anglePtr;
     Vector3 playerPos;
     std::vector<Texture2D> textureArray;
-    int numberOfTextures{6};
+    int numberOfTextures{9};
     int assingTextureRot();
 
 };

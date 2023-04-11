@@ -15,6 +15,8 @@ enemy::enemy(player* plPtr)
 
 void enemy::tick(float deltaTime, Camera3D cam)
 {
+    float leftRight{1};
+    if(angle < -0.3926990817 || angle >  3.5342917353)leftRight = -1;
     calculateAngle();
     anglePtr = &angle;
     Rectangle enemySource{0,0,textureArray.at(assingTextureRot()).width,textureArray.at(assingTextureRot()).height};
@@ -33,28 +35,48 @@ void enemy::calculateAngle()
 
 int enemy::assingTextureRot()
 {
-    if(angle <= 0.3926990817 && angle >= -0.3926990817)
+    if(angle <= 0.3926990817 && angle > -0.3926990817)
     {
         return 1;
     }
     
-    else if(angle >= 0.3926990817 && angle <=  1.1780972451 || ) 
+    else if(angle > 0.3926990817 && angle <=  1.1780972451) 
     {
         return 2;
     }
     
-    else if (angle >= 1.1780972451 && angle <= 1.9634954085)
+    else if (angle > 1.1780972451 && angle <= 1.9634954085)
     {
         return 3;
     }
 
-    else if (angle >= 1.9634954085 && angle <= 2.7488935719)
+    else if (angle > 1.9634954085 && angle <= 2.7488935719)
     {
         return 4;
     }
 
-    else if (angle >= 2.7488935719 && angle <= 3.5342917353) 
+    else if (angle > 2.7488935719 && angle <= 3.5342917353) 
     {
         return 5;
+    }
+
+    else if(angle > 3.5342917353 && angle <= 4.3196898987 || angle <=  -1.963495408 &&  angle > -3.5342917353)
+    {
+        return 6;
+    }
+
+    else if (angle <= -1.1780972451 && angle > -1.963495408 || angle > 4.3196898987 && angle <= 5.1050880621)
+    {
+        return 7;
+    }
+
+    else if (angle <= -0.3926990817 && angle > -1.1780972451 || angle > 5.1050880621 && angle <= 5.8904862255)
+    {
+        return 8;
+    }
+
+    else
+    { 
+        return 0;
     }
 }
